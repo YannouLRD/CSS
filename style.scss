@@ -1,0 +1,23 @@
+$cd-btn: #2fc9de;
+$cd-btn-start: rgba(1, 28, 55, 0);
+$cd-btn-end: rgba(1, 28, 55, 1);
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+.btn {
+    color: #2fc9de;
+    background-color: $cd-btn-start;
+    border: 4px solid $cd-btn;
+    border-radius: 10rem;
+    cursor: pointer;
+    font-size: 3rem;
+    padding: 1.85rem 3rem;
+    transition: transform 450ms, background-color 300ms 150ms;
+    &:hover {
+        transform: scale(1.13);
+        background-color: $cd-btn-end;
+    }
+}
