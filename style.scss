@@ -6,12 +6,16 @@ $border-rad: 2rem;
 $clr-btn: #15DEA5;
 $width: 8rem;
 $height: 3rem;
-/*
+$prog-bar-dur: 1000ms;
+$prog-bar-delay: 150ms;
+$cat-delay: $prog-bar-dur + $prog-bar-delay*2;
+
 .container {
     display: flex;
     justify-content: center;
     margin-top: 20rem;
 }
+/*
 .btn {
     color: #2fc9de;
     background-color: $cd-btn-start;
@@ -28,28 +32,77 @@ $height: 3rem;
     &:active {
         & + .progress {
             & > .progress__bar {
-                transform: scaleX(1);
+                
             }
         }
     }
-}
+}*/
 .progress__bar {
     width: 50rem;
     height: 100%;
     background-color: #2fc9de;
 }
 .progress {
-    border: 4px solid black;
-    padding: 0.1rem;
+    border: 3px solid black;
+    padding: .1rem;
     width: 50rem;
     height: 1rem;
-    margin-left: 5rem;
     &__bar {
         transform-origin: left;
-        transform: scaleX(0);
-        transition: transform 1000ms cubic-bezier(.32,0,.07,1);
+        /*opacity: 0;*/
+        transform: scaleX(.5);
+        animation: progress__bar $prog-bar-dur $prog-bar-delay both;
     }
-}*/
+}
+@keyframes progress__bar {
+    0% {
+        transform: scaleX(0);
+        opacity: .1;
+    }
+    17% {
+        transform: scaleX(.18);
+    }
+    24% {
+        transform: scaleX(.4);
+        animation-timing-function:  cubic-bezier(.9,0,.1,1);
+    }
+    46% {
+        transform: scaleX(.81);
+        animation-timing-function: cubic-bezier(.25,.25,1);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+.cat {
+    animation: cat 0ms $cat-delay both;
+    width: 50vw;
+    height: 30vw;
+    position: absolute;
+    overflow: hidden;
+    background-image: url("https://bit.ly/2XJJLKn");
+    background-size: cover;
+    background-position: -20%;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: .1rem;
+    font-size: 4vw;
+    font-weight: 900;
+    color: white;
+}
+@keyframes cat{
+    0% {
+        transform: translateX(-9999px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+/*
 .btn {
     width: $width;
     height: $height;
@@ -79,3 +132,4 @@ $height: 3rem;
         transition: opacity 250ms;
     }
 }
+*/
